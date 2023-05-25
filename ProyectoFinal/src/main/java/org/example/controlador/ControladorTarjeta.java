@@ -54,11 +54,11 @@ public class ControladorTarjeta extends MouseAdapter {
 
             if(modelo.agregarTarjeta(tarjeta)){
                 JOptionPane.showMessageDialog(view, "Se agrego correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE, icono);
-                this.view.getTblTarjeta().updateUI();
             }else {
                 JOptionPane.showMessageDialog(view, "No se pudo agregar a la base de datos. Revisa la conexion", "Error al insertar",
                         JOptionPane.ERROR_MESSAGE);
             }
+            this.view.getTblTarjeta().updateUI();
         }
 
         if(e.getSource() == this.view.getTblTarjeta()){
@@ -73,7 +73,7 @@ public class ControladorTarjeta extends MouseAdapter {
                 this.view.getImagenTarjeta().setText("");
             }catch (MalformedURLException mue){
                 this.view.getImagenTarjeta().setIcon(errorURL);
-                JOptionPane.showMessageDialog(view, "La URL dl registro no es correcta, modificala y vuelve a intentarlo.",
+                JOptionPane.showMessageDialog(view, "La URL del registro no es correcta, modificala y vuelve a intentarlo.",
                         "ATENCION", JOptionPane.ERROR_MESSAGE);
                 System.out.println(e.toString());
             }
@@ -92,12 +92,11 @@ public class ControladorTarjeta extends MouseAdapter {
             if(respuesta == JOptionPane.YES_NO_OPTION){
                     modelo.eliminarDatos(index);
                     JOptionPane.showMessageDialog(view, "El objeto fue borrado exitosamente", "Aviso", JOptionPane.INFORMATION_MESSAGE, icono);
-                    this.view.getTblTarjeta().updateUI();
             }else {
                 JOptionPane.showMessageDialog(view, "El Objeto no fue eliminado", "Error al eliminar",
                         JOptionPane.ERROR_MESSAGE);
-                this.view.getTblTarjeta().updateUI();
             }
+
             this.view.getTblTarjeta().updateUI();
         }
 
@@ -121,12 +120,12 @@ public class ControladorTarjeta extends MouseAdapter {
 
             if(modelo.updateTarjeta(tarjeta)){
                 JOptionPane.showMessageDialog(view, "Se ha modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE, icono);
-                this.view.getTblTarjeta().updateUI();
             }else {
                 JOptionPane.showMessageDialog(view, "No se pudo modificar. Revisa la conexion", "Error al insertar",
                         JOptionPane.ERROR_MESSAGE);
-                this.view.getTblTarjeta().updateUI();
             }
+
+            this.view.getTblTarjeta().updateUI();
         }
 
         this.view.limpiar();
