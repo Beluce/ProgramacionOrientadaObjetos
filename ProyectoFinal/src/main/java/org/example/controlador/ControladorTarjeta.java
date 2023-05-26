@@ -41,6 +41,7 @@ public class ControladorTarjeta extends MouseAdapter {
 
             this.view.getTblTarjeta().setModel(modelo);
             this.view.getTblTarjeta().updateUI();
+            this.view.limpiar();
         }
 
         if (e.getSource() == this.view.getBtnAgregar()){
@@ -62,7 +63,7 @@ public class ControladorTarjeta extends MouseAdapter {
             modelo.cargarDatos();
             this.view.getTblTarjeta().setModel(modelo);
             this.view.getTblTarjeta().updateUI();
-
+            this.view.limpiar();
         }
 
         if(e.getSource() == this.view.getTblTarjeta()){
@@ -104,6 +105,7 @@ public class ControladorTarjeta extends MouseAdapter {
             modelo.cargarDatos();
             this.view.getTblTarjeta().setModel(modelo);
             this.view.getTblTarjeta().updateUI();
+            this.view.limpiar();
 
         }
 
@@ -137,10 +139,11 @@ public class ControladorTarjeta extends MouseAdapter {
             modelo.cargarDatos();
             this.view.getTblTarjeta().setModel(modelo);
             this.view.getTblTarjeta().updateUI();
+            this.view.limpiar();
         }
 
         this.view.getTblTarjeta().updateUI();
-        this.view.limpiar();
+
     }
 
 }
