@@ -58,7 +58,11 @@ public class ControladorTarjeta extends MouseAdapter {
                 JOptionPane.showMessageDialog(view, "No se pudo agregar a la base de datos. Revisa la conexion", "Error al insertar",
                         JOptionPane.ERROR_MESSAGE);
             }
+
+            modelo.cargarDatos();
+            this.view.getTblTarjeta().setModel(modelo);
             this.view.getTblTarjeta().updateUI();
+
         }
 
         if(e.getSource() == this.view.getTblTarjeta()){
@@ -90,14 +94,17 @@ public class ControladorTarjeta extends MouseAdapter {
                     "Selecciona una opcion", JOptionPane.YES_NO_OPTION);
 
             if(respuesta == JOptionPane.YES_NO_OPTION){
-                    modelo.eliminarDatos(index);
-                    JOptionPane.showMessageDialog(view, "El objeto fue borrado exitosamente", "Aviso", JOptionPane.INFORMATION_MESSAGE, icono);
+                modelo.eliminarDatos(index);
+                JOptionPane.showMessageDialog(view, "El objeto fue borrado exitosamente", "Aviso", JOptionPane.INFORMATION_MESSAGE, icono);
             }else {
                 JOptionPane.showMessageDialog(view, "El Objeto no fue eliminado", "Error al eliminar",
                         JOptionPane.ERROR_MESSAGE);
             }
 
+            modelo.cargarDatos();
+            this.view.getTblTarjeta().setModel(modelo);
             this.view.getTblTarjeta().updateUI();
+
         }
 
         if (e.getSource() == this.view.getBtnUpdate()){
@@ -120,14 +127,19 @@ public class ControladorTarjeta extends MouseAdapter {
 
             if(modelo.updateTarjeta(tarjeta)){
                 JOptionPane.showMessageDialog(view, "Se ha modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE, icono);
+                this.view.getTblTarjeta().updateUI();
             }else {
-                JOptionPane.showMessageDialog(view, "No se pudo modificar. Revisa la conexion", "Error al insertar",
-                        JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(view, "No se pudo modificar. Revisa la conexion",
+                        "Error al insertar", JOptionPane.ERROR_MESSAGE);
+                this.view.getTblTarjeta().updateUI();
             }
 
+            modelo.cargarDatos();
+            this.view.getTblTarjeta().setModel(modelo);
             this.view.getTblTarjeta().updateUI();
         }
 
+        this.view.getTblTarjeta().updateUI();
         this.view.limpiar();
     }
 
